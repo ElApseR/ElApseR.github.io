@@ -32,10 +32,10 @@ a {
   }
 }
 
-.container {
+.content {
     font-weight: 400;
     font-size: 22px;
-    @include sans-serif-font;
+    font-family: 'Nanum Gothic Coding', monospace;
 }
 
 blockquote {

@@ -35,7 +35,7 @@ background: '/img/posts/06.jpg'
         - hard and soft attention model의 합성으로 생각해도 좋다.
         - hard attention 과 달리, local attention은 **differentiable**하다
 
-![post1_1](/img/posts/post1_1.png)
+<img src="/img/posts/post1_1.png" style="width: 50%; height: 50%"/>
         
 ---
 
@@ -78,7 +78,7 @@ background: '/img/posts/06.jpg'
 
 ## 3.1 Global Attention
 
-![post1_2](/img/posts/post1_2.png)
+<img src="/img/posts/post1_2.png" style="width: 50%; height: 50%"/>
 
 - $${c}_{t}$$를 뽑아낼 때, encoder의 **모든 hidden state**를 고려한다.
 - 이를 위해서는 **alignment vector** $${a}_{t}$$가 필요하다.
@@ -102,7 +102,7 @@ background: '/img/posts/06.jpg'
 
 ## 3.2 Local Attention
 
-![post1_3](/img/posts/post1_3.png)
+<img src="/img/posts/post1_3.png" style="width: 50%; height: 50%"/>
 
 - global attention은 전체 source word를 attend했다. 
     - 이는 resource가 많이 필요하고, 긴 문작 혹은 문맥을 해석하는 데에 비실용적이다.
@@ -136,7 +136,7 @@ background: '/img/posts/06.jpg'
 
 ## 3.3 Input-feeding Approach
 
-![post1_4](/img/posts/post1_4.png)
+<img src="/img/posts/post1_4.png" style="width: 50%; height: 50%"/>
 
 - 이 논문의 모델에서는, atttentional decision이 **독립적**으로 이뤄진다.
     - 하지만, 일반적인 machine training에서는 어느 단어가 번역이 완료되었는지 지속적으로 체크한다.
