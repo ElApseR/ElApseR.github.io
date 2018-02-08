@@ -1,9 +1,10 @@
 
 ---
 layout: post
-title:  "[NLP]Effective Approaches to Attention-based Neural Machine Translation 논문 리"
-date:   2018-02-08 18:15:13 -0400
-background: '/img/posts/05.jpg'
+title:  "[NLP]Effective Approaches to Attention-based Neural Machine Translation"
+subtitle: "NLP 논문 리뷰"
+date:   2018-02-08 18:15:13 -0400
+background: '/img/posts/06.jpg'
 ---
 
 # 0. Abstract
