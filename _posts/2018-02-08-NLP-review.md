@@ -21,7 +21,7 @@ background: '/img/posts/06.jpg'
 - **NMT**가 왜 매력적인가?
     - 도메인 지식이 적어도 되며, 아이디어 자체가 간단하다.
     - **보통의 Machine Translation(MT)**과 달리, **NMT**는 상대적으로 적은 **memory footprint**만 쓴다.
-        - **Standart MT**는 수많은 phrase table과 language model을 저장해두어야 했다.
+        - **Standard MT**는 수많은 phrase table과 language model을 저장해두어야 했다.
         - **NMT**는 end-to-end로 학습되며, 문장 길이와 무관하게 쓸 수 있어서 **일반화**가 가능하다.
         
 - **Attention**은 왜 매력적인가?
