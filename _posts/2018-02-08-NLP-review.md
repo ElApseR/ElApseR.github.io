@@ -2,7 +2,7 @@
 layout: post
 title:  "[NLP]논문 리뷰"
 subtitle: "Effective Approaches to Attention-based Neural Machine Translation"
-date:   2018-02-08 18:15:13 -0400
+date:   2018-02-08 18:15:14 -0400
 background: '/img/posts/06.jpg'
 ---
 
