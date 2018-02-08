@@ -26,7 +26,7 @@ background: '/img/posts/06.jpg'
         
 - **Attention**은 왜 매력적인가?
     - attention은 서로 다른 **modality** 간에 연결을 지을 수 있다는 점에서 최근에 매우 유명해졌다.
-        - 예를 들어 ***speech to text**, **picture to text** etc.
+        - 예를 들어 **speech to text**, **picture to text** etc.
     - (이때만 해도) 저자들이 아는 선에서 NMT에 attention을 적용한 예시가 없었다.
     
 - 따라서 저자들은 두 개의 attention based NMT 모델을 제안한다.
@@ -46,14 +46,15 @@ background: '/img/posts/06.jpg'
 - NMT의 가장 기본적인 형태는  **encoder**와 **decoder**로 구성된다.
     - **encoder** : source sentence를 대표하는 **s** 벡터를 만드는 과정
     - **decoder** : target 단어들을 하나씩 순서대로 만드는 과정
-        - 즉 $$log { p(y|x) } =\sum _{ j=1 }^{ m }{ \log { p({ y }_{ j }|{ y }_{ <j },s) }  } $$ 를 계산하는것.
+        - $$log { p(y|x) } =\sum _{ j=1 }^{ m }{ \log { p({ y }_{ j }|{ y }_{ <j },s) }  }$$
         
 - 가장 일반적으로 **decoder**로 사용되는 건 **RNN**이지만, 그 형태는 논문마다 약간씩 다르다.
     - Kalchbrenner and Blunsom : 일반적인 RNN 사용, encoder로 CNN 사용.
     - Sutckever and Luong : LSTM을 쌓아서 encoder와 decoder로 사용.
     - Cho and Bahdanau : GRU를 이용한 encoder and decoder 사용.
     
-- decoding을 수식으로 나타내면, $$  p({ y }_{ j }|{ y }_{ <j },s) = softmax(g({h}_{j})) $$
+- decoding을 수식으로 나타내면, 
+	- $$p({ y }_{ j }|{ y }_{ <j },s) = softmax(g({h}_{j}))$$
     - h는 RNN hidden unit
         - $${h}_{j} = f({h}_{j-1},s)$$
     - 위에 나열된 사람들 중 Bahdanau와 Jean을 제외한 사람들은 **s**를 처음에 decoder의 hidden state를 initialize 할 때 한 번만 사용.
