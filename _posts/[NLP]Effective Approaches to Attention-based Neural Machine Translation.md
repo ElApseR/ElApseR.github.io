@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "[NLP]Effective Approaches to Attention-based Neural Machine Translation"
