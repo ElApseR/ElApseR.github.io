@@ -32,6 +32,13 @@ a {
   }
 }
 
+.container {
+    font-weight: 400;
+    font-size: 22px;
+    font-family: 'Noto Sans KR', sans-serif;
+    @include 'Noto Sans KR';
+}
+
 blockquote {
   font-style: italic;
   color: $gray-600;
