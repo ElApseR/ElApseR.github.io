@@ -43,6 +43,11 @@ a {
     font-family: 'Spoqa Han Sans', 'Sans-serif';
 }
 
+#content img{
+    margin: 0 auto;
+    display: block;
+}
+
 blockquote {
   font-style: italic;
   color: $gray-600;
