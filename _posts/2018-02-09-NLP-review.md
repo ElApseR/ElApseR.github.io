@@ -75,14 +75,14 @@ background: '/img/posts/03.jpg'
 ## 2-3. Filter dilation and convolution window size
 
 - **dilation**은 적은 parameter로 좀 더 넓은 범위를 본다.
-    - 참고 : http://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/
+- <a href='http://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/'>참고</a> 
     - **Bytenet**과 **Wavenet**에서 convolutional seq2seq autoregressive architecture의 key component로 지목했다.
     
 - dilation은 그러나 stack이 되는 경우, deconvolution 과정에서 나타나곤 하는 **checkboard artifacts와 비슷한 문제를 일으킨다**.
-    - 원인 참고 : https://distill.pub/2016/deconv-checkerboard/
+- <a href='https://distill.pub/2016/deconv-checkerboard/'>원인 참고</a>
     
 - filter가 matrix의 전체 부분을 공정하게(동일하게) 관측하지 않기 때문에, 덜 중요하게 여겨지는 부분 즉, **dead zone**이 발생하게 된다.
-    - 참고 : Multi-Scale Context Aggregatino by Dilated Convolutions
+- 참고 : <a href='https://arxiv.org/abs/1511.07122'>Multi-Scale Context Aggregation by Dilated Convolutions</a>
     
 <img src='/img/post2/post2_4.png' align="center" style="width: 80%; height: 80%"/>
 
