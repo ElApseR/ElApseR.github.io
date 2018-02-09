@@ -39,7 +39,7 @@ background: '/img/posts/03.jpg'
     - Depthwise Convolution : 각 채널마다 독립적으로 convolution을 실행한다.
     - Pointwise Convolution : 1-D convolution으로 여러개의 채널을 하나의 새로운 채널로 합치는 역할을 한다.
     
-<img src='/img/post2/post2_1.png' align="center" style="width: 50%; height: 50%"/>
+<img src='/img/post2/post2_1.png' align="center" style="width: 70%; height: 70%"/>
 
 
 - 왜 depthwise seperable convolution을 하면 parameter 갯수가 줄어들까?
@@ -60,7 +60,7 @@ background: '/img/posts/03.jpg'
 - 파라미터 갯수를 비교해보자(아래서 더 자세히 설명함)
     - k = receptive field, c = channel
 
-<img src='/img/post2/post2_2.png' align="center" style="width: 50%; height: 50%"/>
+<img src='/img/post2/post2_2.png' align="center" style="width: 70%; height: 70%"/>
 
 ## 2-2. Super-Seperable Convolution
 
@@ -69,7 +69,7 @@ background: '/img/posts/03.jpg'
 - 그룹 간에 정보의 전달이 불가하다는 특성이 있다.
     - 이러한 문제를 해결하기위해 stack super-seperable convolutions in layer with co-prime g 를 이용한다.
     
-<img src='/img/post2/post2_3.png' align="center" style="width: 50%; height: 50%"/>
+<img src='/img/post2/post2_3.png' align="center" style="width: 70%; height: 70%"/>
 
 
 ## 2-3. Filter dilation and convolution window size
@@ -84,7 +84,7 @@ background: '/img/posts/03.jpg'
 - filter가 matrix의 전체 부분을 공정하게(동일하게) 관측하지 않기 때문에, 덜 중요하게 여겨지는 부분 즉, **dead zone**이 발생하게 된다.
     - 참고 : Multi-Scale Context Aggregatino by Dilated Convolutions
     
-<img src='/img/post2/post2_4.png' align="center" style="width: 50%; height: 50%"/>
+<img src='/img/post2/post2_4.png' align="center" style="width: 70%; height: 70%"/>
 
 - dilation factor를 서로소 관계인 수로 잡으면 괜찮겠지만, 그렇게 힘들게 쓰느니, 아예 쓰지 않는 것이 낫다.
     - 역자 주) dilation = 3, stride = (2,2) 같은 느낌을 이야기하는 것 같다.
@@ -103,7 +103,7 @@ background: '/img/posts/03.jpg'
 
 - 이해를 돕고자 손수 손으로 그려보았습니다.
 
-<img src='/img/post2/post2_total.png' align="center" style="width: 50%; height: 50%"/>
+<img src='/img/post2/post2_total.png' align="center" style="width: 70%; height: 70%"/>
 
 ---
 
@@ -114,7 +114,7 @@ background: '/img/posts/03.jpg'
 - ByteNet, WaveNet, PixelCNN에서 소개되었던  *convolutional autoregressive structure*를 그대로 사용한다.
     - input과 output이 두 개의 서로 다른 네트워크로 embedding 되어, decode 되기 전에 합쳐진다.
     
-<img src='/img/post2/post2_5.png' align="center" style="width: 50%; height: 50%"/>
+<img src='/img/post2/post2_5.png' align="center" style="width: 70%; height: 70%"/>
 
 ## 3.1 Convolutional modules
 
@@ -128,15 +128,15 @@ background: '/img/posts/03.jpg'
     - Layer Normalization
         - hidden unit h 개에 대한 표준정규화라고 생각하면 된다.
         
-        - <img src='/img/post2/post2_6.png' align="center" style="width: 50%; height: 50%"/>
+        - <img src='/img/post2/post2_6.png' align="center" style="width: 70%; height: 70%"/>
         
         - G와 B는 학습되는 스칼라값이다.
         
 - Convolutional Step은 아래 수식으로 한 번에 정리할 수 있다.
-    - <img src='/img/post2/post2_7.png' align="center" style="width: 50%; height: 50%"/>
+    - <img src='/img/post2/post2_7.png' align="center" style="width: 70%; height: 70%"/>
 
 - Convoluitonal Module은 *convolutional step 네 개*를 *두 개의 skip connection*과 함께 결합한 형태이다
-    - <img src='/img/post2/post2_8.png' align="center" style="width: 50%; height: 50%"/>
+    - <img src='/img/post2/post2_8.png' align="center" style="width: 70%; height: 70%"/>
 
 - 이 Convolutional module을 다시 k 개 stack 하여서 사용한다.
 
@@ -145,7 +145,7 @@ background: '/img/posts/03.jpg'
 - **Attention**을 위해서  Source([m,depth])와 target([n,depth])를 내적하여 사용한다.
 
 - attention은 각 position의 feature vector의 similarity를 계산하고, depth에 따라 rescale 한다.
-    - <img src='/img/post2/post2_9.png' align="center" style="width: 50%; height: 50%"/>
+    - <img src='/img/post2/post2_9.png' align="center" style="width: 70%; height: 70%"/>
     
     - 개인적인 추정 : m,n은 문장의 길이/ depth는 feature vector의 크기 같다.
     
@@ -154,12 +154,12 @@ background: '/img/posts/03.jpg'
     - 즉, source와 target 문장의 각 위치 간의 attention을 만들고, 문장 내에서 어느 위치에 있는지도 정보로써 주고자 하는 듯하다(역자 주)
     
 - timing은 [k, depth]차원의 tensor이다. sine, cosine 함수를 서로 다른 빈도로 얽히게 한 형태이다.
-    - <img src='/img/post2/post2_10.png' style="width: 50%; height: 50%"/>
+    - <img src='/img/post2/post2_10.png' style="width: 70%; height: 70%"/>
     - timing은 다음 논문에서도 사용되었다.**어려움 주의**
         - <a href='https://arxiv.org/abs/1706.03762' >Attention is all you need</a>
 
 - 이 논문의 attention mechanism은 target에 timing signal을 더하고, 두 번의 convolutional step을 거친 뒤, source에 attend하는 형태이다.
-    - <img src='/img/post2/post2_11.png' align="center" style="width: 50%; height: 50%"/>
+    - <img src='/img/post2/post2_11.png' align="center" style="width: 70%; height: 70%"/>
 
 ## 3.3 Autoregressive structure
 
@@ -176,7 +176,7 @@ background: '/img/posts/03.jpg'
 - Input Encoder, IOMixer, Decoder에 대한 설명은 아래 수식으로 대체한다.
 
 - Output Embedding은 단순히 learning-embedding look-up을 수행한다.
-    - <img src='/img/post2/post2_10_2.png' align="center" style="width: 50%; height: 50%"/>
+    - <img src='/img/post2/post2_10_2.png' align="center" style="width: 70%; height: 70%"/>
     
 ---
 
@@ -217,7 +217,7 @@ background: '/img/posts/03.jpg'
 
 - 아래와 같은 결론이 도출되었다.
 
-    - <img src='/img/post2/post2_12.png' align="center" style="width: 50%; height: 50%"/>
+    - <img src='/img/post2/post2_12.png' align="center" style="width: 70%; height: 70%"/>
 
     - Depthwise seperable convolution은 Bytenet과 같은 모델에서 사용한 regular convolution을 확실히 뛰어넘었다.
         - 더 정확하고, 더 빠르고, 파라미터가 덜 필요하고, 더 적은 리소스로 돌릴 수 있다.
@@ -230,7 +230,7 @@ background: '/img/posts/03.jpg'
 
 - 또한 더 깊은 feature depth를 갖는 task에 대해 실험한 결과, 아래의 state-of-art 결과가 도출되었다.
 
-<img src='/img/post2/post2_13.png' align="center" style="width: 50%; height: 50%"/>
+<img src='/img/post2/post2_13.png' align="center" style="width: 70%; height: 70%"/>
 
 ## 5.1 Conclusions
 
