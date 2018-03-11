@@ -159,10 +159,10 @@ background: '/img/posts/02.jpg'
     - supervised learning이 불가한 경우, max iteration을 정해놓는다.
 
 ## 2.4 Answer Module
-    - 마지막에 한 번만 발현되거나, episodic memory의 매 time step마다 발현되거나.
-    - 새로운 GRU를 또 적용한다.
-        - initial state : last memory $$ a_{ 0 }=m^{ { T }_{ M } } $$
-        - 매 timestep 마다 질문 q, 지난 hidden step $$ {a}_{t-1} $$, 이전 step의 output $$ {y}_{t-1} $$ 을 받는다.
-        - $$ y_{ t }=softmax({ W }^{ (a) }a_{ t }) $$
-        - $$ a_{ t }=GRU([y_{ t-1 },q],a_{ t-1 }) $$
-    - 최종 아웃풋은 cross entropy로 학습.
+- 마지막에 한 번만 발현되거나, episodic memory의 매 time step마다 발현되거나.
+- 새로운 GRU를 또 적용한다.
+    - initial state : last memory $$ a_{ 0 }=m^{ { T }_{ M } } $$
+    - 매 timestep 마다 질문 q, 지난 hidden step $$ {a}_{t-1} $$, 이전 step의 output $$ {y}_{t-1} $$ 을 받는다.
+    - $$ y_{ t }=softmax({ W }^{ (a) }a_{ t }) $$
+    - $$ a_{ t }=GRU([y_{ t-1 },q],a_{ t-1 }) $$
+- 최종 아웃풋은 cross entropy로 학습.
