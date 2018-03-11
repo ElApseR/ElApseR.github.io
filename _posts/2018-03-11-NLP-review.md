@@ -2,7 +2,7 @@
 layout: post
 title:  "[NLP]논문 리뷰"
 subtitle: "Ask Me Anything:Dynamic Memory Networks for Natural Language Processing"
-date:   2018-03-11 14:20:14 -0400
+date:   2018-03-10 14:20:14 -0400
 background: '/img/posts/02.jpg'
 ---
 
