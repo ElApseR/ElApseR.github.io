@@ -107,7 +107,7 @@ background: '/img/posts/03.jpg'
 
 - input module과 동일하게, **GRU를 이용하여 질문을 embedding**한다.
 - 차이점은, question의 경우, 가장 마지막 hidden state 하나만을 output으로 출력한다는 것이다.
-- 즉, $q_{ t }=GRU(L[{ w }_{ t }^{ Q }],q_{ t-1 })$ 이며, 최종 출력 $q={q}_{{T}_{Q}}$ 이다.
+- 즉, $q_{ t }=GRU(L[{ w }_{ t }^{ Q }],q_{ t-1 })$ 이며, 최종 출력 $ q={ q }_{ { T }_{ Q } } $ 이다.
 - 여기서 word embedding matrix는 모두 동일하게 사용된다.
 
 ## 2.3 Episodic Memory Module
@@ -119,7 +119,7 @@ background: '/img/posts/03.jpg'
         - ${m}^{i}=GRU({e}^{i},{m}^{i-1})$
         - 최초의 GRU의 state는 question vector 그 자체이다(${m}^{0}=q$).
             - 쉽게 생각해서 관련 정보를 하나씩 이어나가는데, 그 첫 연결고리는 질문 그 자체이다.
-- ${T}_{M}$ 만큼 위 과정을 수행한 뒤, ${m}^{{T}_{M}}$이 answer module로 들어간다.
+- ${T}_{M}$ 만큼 위 과정을 수행한 뒤, $ { m }^{ { T }_{ M } }$이 answer module로 들어간다.
 
 ### 2.3.1 Need for Multiple Episodes
 - 메모리 모듈은 **iterative하게 실행**되므로, 매 기마다 **다른 input에 집중**할 수 있다.
