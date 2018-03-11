@@ -28,13 +28,9 @@ background: '/img/posts/02.jpg'
     4. fact 벡터를 이용하여 **answer module**은 적절한 답변을 생성한다.
 - **DMN**이 학습한 데이터의 예시는 다음과 같다.
 >I: Jane went to the hallway.
->
 >I: Mary walked to the bathroom.
->
 >I: Sandra went to the garden.
->
 >I: Daniel went back to the garden.
->
 >I: Sandra took the milk there.
 >
 >Q: Where is the milk?
