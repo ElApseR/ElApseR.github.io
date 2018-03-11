@@ -154,9 +154,9 @@ background: '/img/posts/02.jpg'
     - t는 time이며, 몇 번째 fact인지를 의미합니다.
 
 ### 2.3.4 Criteria for Stopping
-    - iteration 을 멈추기 위하여, input으로 iterateion을 멈추는 token을 하나 더 추가한다.
-    - 이 input이 gate function에 의하여 선택되면 iteration을 멈춘다.
-    - supervised learning이 불가한 경우, max iteration을 정해놓는다.
+- iteration 을 멈추기 위하여, input으로 iterateion을 멈추는 token을 하나 더 추가한다.
+- 이 input이 gate function에 의하여 선택되면 iteration을 멈춘다.
+- supervised learning이 불가한 경우, max iteration을 정해놓는다.
 
 ## 2.4 Answer Module
 - 마지막에 한 번만 발현되거나, episodic memory의 매 time step마다 발현되거나.
