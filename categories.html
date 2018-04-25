@@ -2,9 +2,9 @@
 layout: page
 title: CATEGORY INDEX
 permalink: /categories/index.html
-title: Category
+title: Categories
 tags: [Categories]
-description: "Posts sorted by categories"
+description: 
 background: '/img/bg-category.jpg'
 ---
 <!-- small tag lists. Not used for now.
@@ -24,7 +24,7 @@ background: '/img/bg-category.jpg'
 -->
 
 {% for tag in site.categories %}
-  <h2 id="{{ tag[0] }}" style="color: #364e91">{{ tag[0] | capitalize }}</h2>
+  <h2 id="{{ tag[0] }}" style="color: #0085A1">{{ tag[0] | capitalize }}</h2>
   <!--ul class="post-list"-->
     {% assign pages_list = tag[1] %}
     {% for post in pages_list %}
@@ -33,7 +33,7 @@ background: '/img/bg-category.jpg'
       <!--li-->
       <article class="post-preview" id="content">
         <a href="{{ site.url }}{{ post.url }}">
-          <h4 class="post-subtitle">{{ post.subtitle }}</h4>
+          <h5 class="post-subtitle">{{ post.subtitle }}</h5>
           <!-- no description about time on categorical sorts.
           <span class="entry-date">
             <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}
