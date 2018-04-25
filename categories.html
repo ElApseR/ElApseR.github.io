@@ -5,10 +5,9 @@ permalink: /categories/index.html
 title: Category Index
 tags: [Categories]
 description: "An archive of posts sorted by categories."
-background: '/img/bg-about.jpg'
+background: '/img/bg-category.jpg'
 ---
 <!-- small tag lists. Not used for now.
-<div id="content">
   <ul class="tag-box inline">
   {% assign tags_list = site.categories %}
     {% if tags_list.first[0] == null %}
@@ -24,6 +23,7 @@ background: '/img/bg-about.jpg'
   </ul>
 -->
 
+<article class="post-preview" id="content">
   {% for tag in site.categories %}
     <h2 id="{{ tag[0] }}" style="color: #364e91">{{ tag[0] | capitalize }}</h2>
     <ul class="post-list">
@@ -46,4 +46,4 @@ background: '/img/bg-about.jpg'
       {% assign group = nil %}
     </ul>
   {% endfor %}
-</div>
+</article>
