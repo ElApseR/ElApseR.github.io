@@ -3,6 +3,7 @@ layout: post
 title:  "[NLP]논문 리뷰"
 subtitle: "Depthwise Separable Convolutions for Neural Machine Translation"
 date:   2018-02-09 20:20:14 -0400
+categories: NLP
 background: '/img/posts/03.jpg'
 ---
 # Hello World!
@@ -29,7 +30,7 @@ background: '/img/posts/03.jpg'
 
 - **Xception**에서 영감을 받은 이 논문은 **depthwise seperable convolution layers**를 stack하고, **residual connection까지 적용**한 형태이다. 이것은 이미지 처리분야에서는 이미 좋다고 증명된 방법이다.
     - 또한 **grouped convolution(sub-seperable convolutions)** 를 적용하여, 자신들이 **super-seperable convolution**이라고 일컫는 것을 통해 더 많은 seperation이 가능해졌다고 주장한다.
-    
+
 - Bytenet과 같은 1D convolutional seq2seq 모델에서 쓰이던 **filter dilation은 사용하지 않았다**. 대신 seperability를 이용하여 그것보다 좋은 성능을 냈다.
 
 ## 2-1. Seperable Convolutions and grouped convolutions
@@ -39,7 +40,7 @@ background: '/img/posts/03.jpg'
 - 즉, depthwise seperable convolution은 *Depthwise Convolution*과 *Pointwise Convolution*의 결합이다.
     - Depthwise Convolution : 각 채널마다 독립적으로 convolution을 실행한다.
     - Pointwise Convolution : 1-D convolution으로 여러개의 채널을 하나의 새로운 채널로 합치는 역할을 한다.
-    
+
 <img src='/img/post2/post2_1.png' align="center" style="width: 80%; height: 80%"/>
 
 
@@ -55,7 +56,7 @@ background: '/img/posts/03.jpg'
 - Grouped Convolution 은 기존 Convolution과 depthwise seperable convolution의 사이에 위치한다.
     - input의 채널을 서로 안 겹치게 segmentation한 뒤, regular spatial convolution을 하고 concat한다.
     - 참고 : https://blog.yani.io/filter-group-tutorial/
-    
+
 - Depthwise seperable convolution은 동일한 파라미터 갯수로 더 잘 기능하는 것이 이미 증명되었다.
 
 - 파라미터 갯수를 비교해보자(아래서 더 자세히 설명함)
@@ -69,22 +70,22 @@ background: '/img/posts/03.jpg'
 
 - 그룹 간에 정보의 전달이 불가하다는 특성이 있다.
     - 이러한 문제를 해결하기위해 stack super-seperable convolutions in layer with co-prime g 를 이용한다.
-    
+
 <img src='/img/post2/post2_3.png' align="center" style="width: 80%; height: 80%"/>
 
 
 ## 2-3. Filter dilation and convolution window size
 
 - **dilation**은 적은 parameter로 좀 더 넓은 범위를 본다.
-    - <a href='http://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/'>참고 페이지</a> 
+    - <a href='http://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/'>참고 페이지</a>
     - **Bytenet**과 **Wavenet**에서 convolutional seq2seq autoregressive architecture의 key component로 지목했다.
-    
+
 - dilation은 그러나 stack이 되는 경우, deconvolution 과정에서 나타나곤 하는 **checkboard artifacts와 비슷한 문제를 일으킨다**.
     - <a href='https://distill.pub/2016/deconv-checkerboard/'>참고 페이지</a>
-    
+
 - filter가 matrix의 전체 부분을 공정하게(동일하게) 관측하지 않기 때문에, 덜 중요하게 여겨지는 부분 즉, **dead zone**이 발생하게 된다.
     - 참고 : <a href='https://arxiv.org/abs/1511.07122'>Multi-Scale Context Aggregation by Dilated Convolutions</a>
-    
+
 <img src='/img/post2/post2_4.png' align="center" style="width: 80%; height: 80%"/>
 
 - dilation factor를 서로소 관계인 수로 잡으면 괜찮겠지만, 그렇게 힘들게 쓰느니, 아예 쓰지 않는 것이 낫다.
@@ -114,7 +115,7 @@ background: '/img/posts/03.jpg'
 
 - ByteNet, WaveNet, PixelCNN에서 소개되었던  *convolutional autoregressive structure*를 그대로 사용한다.
     - input과 output이 두 개의 서로 다른 네트워크로 embedding 되어, decode 되기 전에 합쳐진다.
-    
+
 <img src='/img/post2/post2_5.png' align="center" style="width: 80%; height: 80%"/>
 
 ## 3.1 Convolutional modules
@@ -128,11 +129,11 @@ background: '/img/posts/03.jpg'
     - Depthwise Seperable Convolution
     - Layer Normalization
         - hidden unit h 개에 대한 표준정규화라고 생각하면 된다.
-        
+
         - <img src='/img/post2/post2_6.png' align="center" style="width: 80%; height: 80%"/>
-        
+
         - G와 B는 학습되는 스칼라값이다.
-        
+
 - Convolutional Step은 아래 수식으로 한 번에 정리할 수 있다.
     - <img src='/img/post2/post2_7.png' align="center" style="width: 80%; height: 80%"/>
 
@@ -147,13 +148,13 @@ background: '/img/posts/03.jpg'
 
 - attention은 각 position의 feature vector의 similarity를 계산하고, depth에 따라 rescale 한다.
     - <img src='/img/post2/post2_9.png' align="center" style="width: 80%; height: 80%"/>
-    
+
     - 개인적인 추정 : m,n은 문장의 길이/ depth는 feature vector의 크기 같다.
-    
+
 - attention이 positional한 정보까지 가질 수 있도록 하기 위해서 timing이라는 signal을 활용한다.
 
     - 즉, source와 target 문장의 각 위치 간의 attention을 만들고, 문장 내에서 어느 위치에 있는지도 정보로써 주고자 하는 듯하다(역자 주)
-    
+
 - timing은 [k, depth]차원의 tensor이다. sine, cosine 함수를 서로 다른 빈도로 얽히게 한 형태이다.
     - <img src='/img/post2/post2_10.png' style="width: 65%; height: 65%"/>
     - timing은 다음 논문에서도 사용되었다.**어려움 주의**
@@ -178,7 +179,7 @@ background: '/img/posts/03.jpg'
 
 - Output Embedding은 단순히 learning-embedding look-up을 수행한다.
     - <img src='/img/post2/post2_10_2.png' align="center" style="width: 80%; height: 80%"/>
-    
+
 ---
 
 # 4. Related Work
@@ -211,7 +212,7 @@ background: '/img/posts/03.jpg'
     - Depthwise Seperable보다 조금 더 regular convolution에 가까운 모델을 쓰면 어떻게 될까?
         - Depthwise Seperable Convolution을 g-sub-seperable convolution으로 교체
     - Depthwise Seperable과 우리가 새로 만든 Super-sub-seperable 간의 성능 비교
-    
+
 - WMT English to German translation task 수행.
 
 - tokenization을 위해, Sennrich와 동일한 subword unit을 이용한  tokenization 수행.
@@ -222,9 +223,9 @@ background: '/img/posts/03.jpg'
 
     - Depthwise seperable convolution은 Bytenet과 같은 모델에서 사용한 regular convolution을 확실히 뛰어넘었다.
         - 더 정확하고, 더 빠르고, 파라미터가 덜 필요하고, 더 적은 리소스로 돌릴 수 있다.
-        
+
     - Full Depthwise Seperable convolution이 g-sub-seperable convolution보다 낫다. 그룹의 갯수를 낮춰서 depthwise seperable convolution에 가까워질수록 성능이 좋았다.
-    
+
     - Depthwise Seperable Convolution을 이용하여, 리소스가 허락하는 수준까지 window size를 키우는 것이 dilation을 사용하는 것보다 훨씬 좋았다. Dilation은 불필요하다.
 
     - 우리가 새로 소개한 super-seperable convolution이 괄목할만한 성능의 향상을 보인다.
