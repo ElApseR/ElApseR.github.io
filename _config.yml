@@ -1,19 +1,24 @@
 title:             "혀노의 기술 블로그"
 email:             medussa2818@gmail.com
-description:       Projects and Research by Hyunho Cho 
+description:       Projects and Research by Hyunho Cho
 author:            Hyunho Cho
 baseurl:           ""
 url:               "http://elapser.github.io"
+categories:        - Python
+                   - Data Visualization
+                   - Statistics
+                   - Machine Learning
+                   - Deep Learning
 
 # Social Profiles
-twitter_username:  
+twitter_username:
 github_username:   ElApseR
-facebook_username: 
+facebook_username:
 
 # Build settings
 future:            true
 markdown:          kramdown
-paginate:          5
+paginate:          7
 paginate_path:     "/posts/page:num/"
 plugins:
   - jekyll-feed
