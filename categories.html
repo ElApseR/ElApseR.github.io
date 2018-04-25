@@ -33,9 +33,10 @@ background: '/img/bg-about.jpg'
         {% if group == null or group == post.group %}
         <li>
           <a href="{{ site.url }}{{ post.url }}">{{ post.subtitle }}
+            <!-- no description about time on categorical sorts.
             <span class="entry-date">
               <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}
-              </time>
+              </time>-->
           </a>
         </li>
         {% endif %}
