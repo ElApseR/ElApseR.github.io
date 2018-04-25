@@ -2,9 +2,9 @@
 layout: page
 title: CATEGORY INDEX
 permalink: /categories/index.html
-title: Category Index
+title: Category
 tags: [Categories]
-description: "An archive of posts sorted by categories."
+description: "Posts sorted by categories"
 background: '/img/bg-category.jpg'
 ---
 <!-- small tag lists. Not used for now.
@@ -32,12 +32,14 @@ background: '/img/bg-category.jpg'
         {% if post.title != null %}
         {% if group == null or group == post.group %}
         <li>
-          <a href="{{ site.url }}{{ post.url }}">{{ post.subtitle }}
+          <a href="{{ site.url }}{{ post.url }}">
+            <h3 class="post-subtitle">{{ post.subtitle }}</h3>
             <!-- no description about time on categorical sorts.
             <span class="entry-date">
               <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}
               </time>-->
           </a>
+          <p class="post-meta">Posted on {{ post.date | date: '%B %d, %Y' }}</p>
         </li>
         {% endif %}
         {% endif %}
