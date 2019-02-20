@@ -92,10 +92,10 @@ background: '/img/posts/02.jpg'
 
 현재 주어진 연속형 독립 변수는 Temperature, Humidity, CO2, Humidity Ratio 이며 이를 이용하여 Occupancy, 즉 재실 여부를 파악하기 위해서는 해당 변수들이 재실 여부에 대하여 서로 다른 값을 가져야할 것이다. 예를 들어, x라는 변수로 y가 1 또는 0인지를 예측하고자 할 때, y값에 무관하게 x가 비슷한 형태를 가지고 있다면, 이는 y를 분류하는 데에 사용하기 힘들 것이다. 이 판단을 돕는 다양한 방법들이 있지만, 여기서는 boxplot을 이용하여 살펴보았다.
 
-.             |  .
-:-------------------------:|:-------------------------:
-<img src='/img/post4/8.png' style='height: 100%; width: 100%; object-fit: contain'/>  |  <img src='/img/post4/9.png' style='height: 100%; width: 100%; object-fit: contain'/>
-<img src='/img/post4/10.png' style='height: 100%; width: 100%; object-fit: contain'/>  |  <img src='/img/post4/11.png' style='height: 100%; width: 100%; object-fit: contain'/>
+|.|.|
+|:-------------------------:|:-------------------------:|
+|<img src='/img/post4/8.png' style='height: 100%; width: 100%; object-fit: contain'/>  |  <img src='/img/post4/9.png' style='height: 100%; width: 100%; object-fit: contain'/>|
+|<img src='/img/post4/10.png' style='height: 100%; width: 100%; object-fit: contain'/>  |  <img src='/img/post4/11.png' style='height: 100%; width: 100%; object-fit: contain'/>|
 
 
 위의 boxplot을 이용하여, 우리는 occupancy에 따른 각 변수의 대략적인 분포를 파악할 수 있다. 각각의 box에서 색칠된 구간은 해당 변수의 50%가 존재하는 구간이며, 가운데에 쪼개지는 부분은 변수의 중위값이 존재하는 곳이다. 중위값을 기준으로 위아래가 조금씩 파여있는 것을 확인할 수 있는데, 이 부분을 notch라고 한다. 만약 서로 다른 그룹간에 notch가 겹치지 않는다면, empirical하게 95% 신뢰수준 하에서 두 그룹의 변수값의 분포는 서로 유의미하게 다르다는 판단을 내릴 수 있다. 위의 boxplot으로 대략적으로 판단해볼 때, temperature, co2, humidity ratio는 재실 여부에 따라 그 분포가 유의미하게 다를 것으로 보인다. 하지만 humidity의 경우, 재실 여부에 따른 분포 차이가 유의미하지 않아 보인다. 물론 이는 empirical한 결론이기에 확정적으로 말할 수는 없으나, 현재로써는 humidity를 독립변수에서 제거하고, humidity ratio와 나머지 변수를 사용하는 것이 옳다고 보여진다.
@@ -142,8 +142,8 @@ Lasso regression은 L1 regularization 항을 추가한 회귀분석 방식이며
 
 가장 먼저 사무실의 재실 여부를 파악하기 위해 수행한 모델은 로지스틱 회귀 분석 모형이다. 이 모형은 이해가 쉽고, 성능이 꽤나 잘 나온다는 장점이 있다. 우리는 k=4인 k-fold cross validation을 통해 train 데이터의 25%를 validation set으로 사용하여 더욱 일반화된 모형을 설계하였다. 로지스틱 회귀분석은 각 관측치의 Occupancy가 1(재실 중)일 확률을 추정해주는데, 보통은 0.5의 threshold를 기준으로 추정된 확률값이 이보다 높으면 해당 관측치를 1로 분류한다. 우리는 모델의 성능을 더 높이기 위하여 25%의 cross validation set을 통해 f1 score를 max 시키는 최적의 threshold를 추정하였다. 그 결과, threshold=0.32일 때, train 데이터의 f1-score가 최대가 됨을 확인할 수 있었다. 다음은 이를 train과 test 데이터들에 적용한 결과이다.
 
-|train data| test1 data| test2 data
-:--------:|:--------:|:---------:|:---------:
+.| train | test1 | test2
+|:--------:|:--------:|:---------:|:---------:|
 accuracy|0.96|0.93|0.82
 f1 score|0.91|0.90|0.50
 
@@ -155,18 +155,19 @@ f1 score|0.91|0.90|0.50
 모델을 stacking 하여 예측 성능을 높이는 것은 이미 kaggle 등의 데이터 경연대회에서는 하나의 정설처럼 여겨지고 있다. Stacking의 장점은 하나의 단일 모델이 가지고 있는 약점을 다른 모델들을 통해 보완하여, 모델들의 장점만 취할 수 있다는 점이다. 우리는 자체적으로 만든 stacking model을 이용하였으며, 이 모델은 xg-boost, random forest, gradient boosting, bagging, ada boost, mlp, logistic regression, extra tree model들이 두 개의 층에 걸쳐서 쌓여있는 형태이다. 이때 각각의 classifier마다 k=5인 k-fold cross validation을 통해 최적의 threshold를 설정해주었다. 모델의 자세한 구조는 우리팀의 영업 비밀이므로, 이 정도에서 생략하겠다. 최종적으로 stacking이 완료되면 각각의 모델들의 prediction 값이 데이터의 열로 추가되어 총 13개의 컬럼이 추가되는데, 이렇게 추가된 데이터를 다시 classifier에 넣어 최종 prediction을 수행한다.
 
 
-stacking 최종 predict|단일 모델 최종 predict
-:-------------------------:|:-------------------------:
-<img src='/img/post4/16.png' style='height: 100%; width: 100%; object-fit: contain'/> | <img src='/img/post4/17.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
+
+|<img src='/img/post4/16.png' style='height: 100%; width: 100%; object-fit: contain'/> | <img src='/img/post4/17.png' style='height: 100%; width: 100%; object-fit: contain'/>|
+|:-------------------------:|:-------------------------:|
+|stacking 최종 predict|단일 모델 최종 predict|
 
 
 위의 좌측 그림은 stacking model의 최종 classifier 후보 모델별로 cross validation set에 대한 f1-score 및 threshold를 구한 것이다. 우측 그림은 stacking을 사용하지 않고 단일 모델을 이용한 cross validation 결과이다. 동일 모델에 대하여 좌측이 더 좋은 경우도 있고 우측이 더 좋은 경우도 있으나, 최고의 성능을 내는 모델은 stacking을 한 뒤 랜덤 포레스트를 이용하여 분류한 모델이다. 따라서 우리는 이 모형을 test set에 적용해보고자 한다.
 
-.|train data| test1 data| test2 data
-:--------:|:--------:|:---------:|:---------:
-accuracy|0.99|0.93|0.84
-f1 score|0.99|0.90|0.59
+|.|train data| test1 data| test2 data|
+|:--------:|:--------:|:---------:|:---------:|
+|accuracy|0.99|0.93|0.84|
+|f1 score|0.99|0.90|0.59|
 
 
 로지스틱 회귀 모형의 결과와 비교해 보았을 때, 모든 데이터셋에 대하여 정확도 및 f1 score가 비슷하거나 높아진 것을 확인할 수 있다. 특히, 본래 목적이었던 test2 데이터에 대한 f1 score 증가가 달성되었다. 이 결과로 미루어 볼 때, stacking model이 단순 로지스틱 회귀 모형보다 일반화에 성공한 것으로 보인다. 다만, 그럼에도 여전히 test2 데이터의 f1-score는 그리 높지 않은데, 이는 EDA 과정에서도 설명하였듯이, test2 데이터의 형태가 train 및 test1 데이터의 형태와 조금 다른 양상을 띄고 있기 때문이라고 생각된다. 만약 training data가 더 커져서 test2 데이터와 같은 경우도 포함하게 된다면 예측력이 훨씬 높아질 것으로 보인다.
