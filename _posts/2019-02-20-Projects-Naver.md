@@ -71,7 +71,7 @@ background: '/img/posts/02.jpg'
 
 분류 문제를 수행하기 위해여 먼저 데이터를 탐색적으로 분석해보았다. 가장 먼저 궁금했던 것은, 이 회사가 요일에 따라 재실 여부가 다른지 파악하는 것이었다. 외국계 회사일테니, 주말에는 출근을 안 할 것으로 예상되었지만, 혹시라도 52시간 근무제를 지키지 않는 악덕 기업일 가능성도 있으니, 한 번 살펴보고자 하였다. 다행히도 주말에는 출근하지 않는 기업이었다. 근로기준법 준수는 매우 중요하다.
 
-<img src='/img/post4/3.png' align="center"/>
+<img src='/img/post4/3.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
 
 
@@ -79,10 +79,10 @@ background: '/img/posts/02.jpg'
     
 다음으로 궁금했던 것은, training 데이터와 test 데이터들 간의 동질성 여부였다. 이 데이터는 같은 장소에서 서로 다른 날짜에 측정된 것이기 때문에, 여러 외부적인 요인들로 인해 두 데이터가 서로 다른 형태를 띌 가능성이 있다고 보았다. 따라서 각 데이터셋에 대하여 변수의 시간대별 평균값을 구해서 비교해보기로 하였다. 이때, 위에서 확인할 수 있듯이 주말에는 출근을 하지 않았기 때문에, 주말을 포함하고 있는 training 데이터와 test2 데이터에서는 주말의 경우를 제외하고 평균값을 취해주었다.
 
-<img src='/img/post4/4.png' align="center"/>
-<img src='/img/post4/5.png' align="center"/>
-<img src='/img/post4/6.png' align="center"/>
-<img src='/img/post4/7.png' align="center"/>
+<img src='/img/post4/4.png' style='height: 100%; width: 100%; object-fit: contain'/>
+<img src='/img/post4/5.png' style='height: 100%; width: 100%; object-fit: contain'/>
+<img src='/img/post4/6.png' style='height: 100%; width: 100%; object-fit: contain'/>
+<img src='/img/post4/7.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
 대부분의 경우 training 데이터와 test1, test2 데이터의 형태가 비슷했으나,  test2 데이터의 경우, CO2와 Humidity가 나머지 두 데이터와 약간 다른 형태를 띄는 모습이 보였다. 하지만 이 경우에도 전체적인 trend는 비슷하다고 보였기 때문에, training data를 이용하여 학습된 모델을 test 데이터들의 occupancy 추정에 사용하는 것이 타당하다고 판단하였다.
 
@@ -94,8 +94,8 @@ background: '/img/posts/02.jpg'
 
 .             |  .
 :-------------------------:|:-------------------------:
-![temp_by_occupancy](/img/post4/8.png)  |  ![hum_by_occupancy](/img/post4/9.png)
-![co2_by_occupancy](/img/post4/10.png)  |  ![hum_rate_by_occupancy](/img/post4/11.png)
+<img src='/img/post4/8.png' style='height: 100%; width: 100%; object-fit: contain'/>  |  <img src='/img/post4/9.png' style='height: 100%; width: 100%; object-fit: contain'/>
+<img src='/img/post4/10.png' style='height: 100%; width: 100%; object-fit: contain'/>  |  <img src='/img/post4/11.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
 
 위의 boxplot을 이용하여, 우리는 occupancy에 따른 각 변수의 대략적인 분포를 파악할 수 있다. 각각의 box에서 색칠된 구간은 해당 변수의 50%가 존재하는 구간이며, 가운데에 쪼개지는 부분은 변수의 중위값이 존재하는 곳이다. 중위값을 기준으로 위아래가 조금씩 파여있는 것을 확인할 수 있는데, 이 부분을 notch라고 한다. 만약 서로 다른 그룹간에 notch가 겹치지 않는다면, empirical하게 95% 신뢰수준 하에서 두 그룹의 변수값의 분포는 서로 유의미하게 다르다는 판단을 내릴 수 있다. 위의 boxplot으로 대략적으로 판단해볼 때, temperature, co2, humidity ratio는 재실 여부에 따라 그 분포가 유의미하게 다를 것으로 보인다. 하지만 humidity의 경우, 재실 여부에 따른 분포 차이가 유의미하지 않아 보인다. 물론 이는 empirical한 결론이기에 확정적으로 말할 수는 없으나, 현재로써는 humidity를 독립변수에서 제거하고, humidity ratio와 나머지 변수를 사용하는 것이 옳다고 보여진다.
@@ -103,9 +103,9 @@ background: '/img/posts/02.jpg'
 독립 변수 중에서 연속형이 아닌 변수는 datetime이다. 우리는 이 변수를 요일, 시간대로 나누어서 분석에 사용하고자 하였다. 이렇게 변수를 나누기 위해서는 위의 boxplot과 마찬가지로, 각 경우에 재실 비율이 다른 형태를 띄어야할 것이다.
 
 
-![시간별_mean_occupancy](/img/post4/12.png)
+<img src='/img/post4/12.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
-![요일별_mean_occupancy](/img/post4/13.png)
+<img src='/img/post4/13.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
 
 위의 plot을 통해 각 요일별, 시간대별 재실 비율을 확인할 수 있다. 먼저 시간대별 재실 비율을 확인해보자. 시간대는 재실 비율을 연속형으로 그린 뒤, 그 형태가 가장 크게 구분되는 네 개의 구간으로 쪼갰다.
@@ -118,9 +118,9 @@ background: '/img/posts/02.jpg'
 
 그렇다면 요일별로는 어떨까? Plot에서 무언가 이상한 점을 확인할 수 있었다. 바로 화요일과 수요일에 재실 비율이 유난히 낮다는 것이다. 이 회사는 화요일과 수요일에 조기 퇴근을 하는 풍습이라도 전해져 내려오는 것일까? 물론 그렇지 않다.  위에서 데이터 요약 파트에 명시하였듯이 training 데이터의 측정기간은 15.02.04(수) 17:51 ~ 15.02.10(화) 09:33이다. 즉, 수요일 오후 근무 시간대 끝물에 측정을 시작하여, 화요일 오전 근무 시간대 시작점에 측정을 종료한 것이다. 이에 따라 training 데이터만 보면 이 회사는 화요일과 수요일에 거의 출근을 하지 않는 것처럼 보이는 것이다. 만약 이 상태로 요일을 모델 학습에 사용한다면 우리의 모델은 화요일과 수요일의 경우 재실할 가능성이 낮아진다고 학습할 것이지만 이는 사실이 아니다. 따라서, 우리는 날짜를 요일 단위로 변환하지 않고, 평일과 주말의 구분만 이용하기로 하였다. 그 결과는 아래와 같다. 재실 비율이 제대로 측정된 월,목,금요일의 재실 비율보다는 소폭 감소하였으나, 크게 감소하지는 않았다. 또한, 평일 여부와 근무시간대를 이용하여 그린 heatmap에서 구간별로 재실 비율의 차이가 큰 것을 확인할 수 있었다. 따라서 시간대를 이렇게 두가지 방식으로 나눔으로써, 재실 여부 파악에 사용하기로 결정하였다.
 
-![주말평일_재실비율](/img/post4/14.png)
+<img src='/img/post4/14.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
-![평일_근무시간대_재실비율](/img/post4/15.png)
+<img src='/img/post4/15.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
 ---
 
@@ -157,7 +157,7 @@ f1 score|0.91|0.90|0.50
 
 stacking 최종 predict|단일 모델 최종 predict
 :-------------------------:|:-------------------------:
-![stacking 최종 predict](/img/post4/16.png) | ![단일 모델 최종 predict](/img/post4/17.png)
+<img src='/img/post4/16.png' style='height: 100%; width: 100%; object-fit: contain'/> | <img src='/img/post4/17.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
 
 
