@@ -7,7 +7,7 @@ categories: Projects
 background: '/img/posts/02.jpg'
 ---
 
-# 들어가며
+<h1 align='center'>들어가며</h1>
 - 이 프로젝트는 데이터 분석 과정의 흐름을 보여주기 위한 간단한 toy project입니다.
 - 이 프로젝트는 <a href="https://sohnnn.tistory.com/">손진원</a>, <a href="https://github.com/kwj962004">김우정</a>과 함께 진행했습니다.
 
@@ -17,14 +17,14 @@ background: '/img/posts/02.jpg'
 
 
 
-<img src='/img/post4/preview.jpg' align="center" style="width: 50%; height: 50%"/>
+<img src='/img/post4/preview.jpg' align="center" style='height: 100%; width: 100%; object-fit: contain'/>
 
 
 어느 회사의 면접장. 면접관은 최종 질문으로 지원자의 장점을 말해보기를 요청하였다. 각종 경제 및 시사 상식, 해당 기업의 창립 년도까지 암기하였으나, 정작 필요한 건 준비하지 않았던 지원자는 엉겁결에 자신은 절약정신이 정말 투철하다며, 회사의 전기(傳記)를 허투루 쓰지 않겠다는 강한 의지를 내비쳤다. 그러나 돌아온 면접관의 ‘그걸 어떻게 알죠?’라는 물음에 면접장의 분위기는 급격히  얼어붙었다. 다른 것은 고만고만했으나 EQ(감성 지수)만은 확실히 뛰어났던 지원자는 면접관들의 비언어적 표현을 통해 자신의 면접이 망했음을 직감하였다. 그렇게 마지막 인사를 하고 터덜터덜 면접장을 나오며, 지원자는 습관적으로 불을 끄고 방을 나왔다. 그는 그 회사에 최종 합격하였다.
 
 이 사례가 우리에게 주는 교훈은 자명하다. ‘회사의 전기(傳記)를 허투루 쓰지 말자.’ 강남역에서 술을 마시다보면, 주변 사무실에 새벽까지 층 전체에 불이 들어와있는 것을 목격하곤 한다. 그 층에 사람이 몇 명이나 있을지는 모르겠으나, 기껏해야 한 두명이라면 해당 기업의 CEO는 매우 분노할 것이다. 따라서 우리는 주어진 공간에 실제로 사람이 있는지 판별해주는 모델을 설계하여, 필요한 곳에만 조명이 들어오게 함으로써 회사의 영업이익 극대화에 기여하고 CEO로부터 칭찬을 듣고 싶었다.
 
-### 데이터 요약
+#### 데이터 요약
 - 사용된 데이터 : Occupancy Detection Data Set
 - 데이터 출처 : UCI Machine Learning Repository(https://archive.ics.uci.edu/ml/datasets/Occupancy+Detection+)
 - 시간 단위로 측정된 사람의 재실 여부와 그에 관련 있을 것으로 보이는 5가지 변수 + 날짜 및 시간
@@ -35,7 +35,7 @@ background: '/img/posts/02.jpg'
     
 
 
-### 변수 이름 및 설명
+#### 변수 이름 및 설명
 - datetime : 년, 월, 일, 시, 분. 초
 - Temperature : 섭씨로 측정된 사무실의 온도
 - Humidity : 사무실의 습도(%)
@@ -46,12 +46,12 @@ background: '/img/posts/02.jpg'
 
 
 
-### 주제 선정의 배경
+#### 주제 선정의 배경
 
 처음 데이터를 접하고 주제를 선정하기 전에 간단한 EDA를 동해 데이터를 탐색하던 중, 한 가지 특이한 사실을 발견하였다. 아래 그림을 확인해보자.  
 
-<img src='/img/post4/1.png' align="center"/>
-<img src='/img/post4/2.png' align="center"/>
+<img src='/img/post4/1.png' style='height: 100%; width: 100%; object-fit: contain'/>
+<img src='/img/post4/2.png' style='height: 100%; width: 100%; object-fit: contain'/>
 
 위의 그림은 training과 test 데이터에 대하여, 평일의 시간대별 빛의 밝기의 평균값을 그린 것이다. 아래는 같은 조건 하에서 시간대별 평균 재실 비율을 그린 것이다. 두 그래프가 놀랍도록 비슷하게 생긴 것을 확인할 수 있다. 그 이유를 상식적으로 추정해보았을 때, 사무실에 사람이 있는데 굳이 불을 끄고 있을 이유가 없고, 퇴근할 때 불을 켜둘 이유가 없기 때문이라고 생각하였다. 만약 그런 일이 일어난다면, 사무실 사람들이 실수를 했든, 연구자를 일부러 방해하려고 했든 둘 중의 하나일 것이다. 따라서 먼저 간단히 light 변수만으로 재실 여부를 추정해보기로 하였다. Binary classification 문제에 사용되는 가장 간단한 모델인 로지스틱 회귀를 수행해보았으며, 그 결과는 아래와 같다.
 
@@ -67,7 +67,7 @@ background: '/img/posts/02.jpg'
 <h1 align="center">EDA</h1>
 
 
-### 주말 출근 여부
+#### 주말 출근 여부
 
 분류 문제를 수행하기 위해여 먼저 데이터를 탐색적으로 분석해보았다. 가장 먼저 궁금했던 것은, 이 회사가 요일에 따라 재실 여부가 다른지 파악하는 것이었다. 외국계 회사일테니, 주말에는 출근을 안 할 것으로 예상되었지만, 혹시라도 52시간 근무제를 지키지 않는 악덕 기업일 가능성도 있으니, 한 번 살펴보고자 하였다. 다행히도 주말에는 출근하지 않는 기업이었다. 근로기준법 준수는 매우 중요하다.
 
@@ -75,7 +75,7 @@ background: '/img/posts/02.jpg'
 
 
 
-### 데이터 간의 동질성 파악
+#### 데이터 간의 동질성 파악
     
 다음으로 궁금했던 것은, training 데이터와 test 데이터들 간의 동질성 여부였다. 이 데이터는 같은 장소에서 서로 다른 날짜에 측정된 것이기 때문에, 여러 외부적인 요인들로 인해 두 데이터가 서로 다른 형태를 띌 가능성이 있다고 보았다. 따라서 각 데이터셋에 대하여 변수의 시간대별 평균값을 구해서 비교해보기로 하였다. 이때, 위에서 확인할 수 있듯이 주말에는 출근을 하지 않았기 때문에, 주말을 포함하고 있는 training 데이터와 test2 데이터에서는 주말의 경우를 제외하고 평균값을 취해주었다.
 
@@ -88,7 +88,7 @@ background: '/img/posts/02.jpg'
 
 
 
-### Occupancy와 독립변수 간의 관계 파악
+#### Occupancy와 독립변수 간의 관계 파악
 
 현재 주어진 연속형 독립 변수는 Temperature, Humidity, CO2, Humidity Ratio 이며 이를 이용하여 Occupancy, 즉 재실 여부를 파악하기 위해서는 해당 변수들이 재실 여부에 대하여 서로 다른 값을 가져야할 것이다. 예를 들어, x라는 변수로 y가 1 또는 0인지를 예측하고자 할 때, y값에 무관하게 x가 비슷한 형태를 가지고 있다면, 이는 y를 분류하는 데에 사용하기 힘들 것이다. 이 판단을 돕는 다양한 방법들이 있지만, 여기서는 boxplot을 이용하여 살펴보았다.
 
@@ -127,7 +127,7 @@ background: '/img/posts/02.jpg'
 <h1 align="center">Modeling</h1>
 
 
-### Feature Selection - Lasso Regression
+#### Feature Selection - Lasso Regression
 
 위에서 EDA를 통해 우리는 Occupancy 예측에 온도(Temperature), 이산화탄소 농도(CO2),  습도 비율(Humidity Ratio), 평일/주말, 근무시간대라는 총 5개의 변수를 사용하기로 결정하였다. 이것만으로도 충분히 좋은 모델이 나올 수는 있으나, 종종 변수간의 관계는 일차적이지 않을 수도 있다. 독립변수 각각이 반응변수에 미치는 영향은 미미하나 그 상호작용은 큰 영향을 미칠 수도 있으며, 이차항이 관련이 있을 수도 있고, log 변환된 값이 관련이 있을 수도 있다. 따라서 이러한 관계를 고려한 변수들을 모델에 넣어주면 성능이 향상될 수 있다. 하지만, feature 갯수를 무작정 늘리면 training 데이터에 overfitting이 발생하여 모델의 예측력이 오히려 떨어지는 상황이 발생한다. 이를 방지하기 위해 feature selection을 해주어야하며, 다양한 feature selection 방법 중에서 우리는 Lasso Regression을 사용하기로 하였다. 
 
@@ -138,7 +138,7 @@ Lasso regression은 L1 regularization 항을 추가한 회귀분석 방식이며
 이제 이 변수들을 이용하여 모델을 설계하고자 한다.
 
 
-### Logistic Regression
+#### Logistic Regression
 
 가장 먼저 사무실의 재실 여부를 파악하기 위해 수행한 모델은 로지스틱 회귀 분석 모형이다. 이 모형은 이해가 쉽고, 성능이 꽤나 잘 나온다는 장점이 있다. 우리는 k=4인 k-fold cross validation을 통해 train 데이터의 25%를 validation set으로 사용하여 더욱 일반화된 모형을 설계하였다. 로지스틱 회귀분석은 각 관측치의 Occupancy가 1(재실 중)일 확률을 추정해주는데, 보통은 0.5의 threshold를 기준으로 추정된 확률값이 이보다 높으면 해당 관측치를 1로 분류한다. 우리는 모델의 성능을 더 높이기 위하여 25%의 cross validation set을 통해 f1 score를 max 시키는 최적의 threshold를 추정하였다. 그 결과, threshold=0.32일 때, train 데이터의 f1-score가 최대가 됨을 확인할 수 있었다. 다음은 이를 train과 test 데이터들에 적용한 결과이다.
 
@@ -150,7 +150,7 @@ f1 score|0.91|0.90|0.50
 위에서 확인할 수 있듯이. train과 test1 데이터에 대해서는 모델의 성능이 꽤나 좋았다. 하지만 test2 데이터에 대해서는 f1 score가 상대적으로 낮았다. 우리는 occupancy=1이 상대적으로 더 적은 불균형 데이터를 다루고 있기 때문에 f1 score가 높은 것이 중요한데, test2에 대하여 이를 달성하고 있지 못하므로 이를 해결해주고자 했다. 따라서 좀더 복잡한 stack 모델을 적용해보았다.
 
 
-### Stacking Model
+#### Stacking Model
 
 모델을 stacking 하여 예측 성능을 높이는 것은 이미 kaggle 등의 데이터 경연대회에서는 하나의 정설처럼 여겨지고 있다. Stacking의 장점은 하나의 단일 모델이 가지고 있는 약점을 다른 모델들을 통해 보완하여, 모델들의 장점만 취할 수 있다는 점이다. 우리는 자체적으로 만든 stacking model을 이용하였으며, 이 모델은 xg-boost, random forest, gradient boosting, bagging, ada boost, mlp, logistic regression, extra tree model들이 두 개의 층에 걸쳐서 쌓여있는 형태이다. 이때 각각의 classifier마다 k=5인 k-fold cross validation을 통해 최적의 threshold를 설정해주었다. 모델의 자세한 구조는 우리팀의 영업 비밀이므로, 이 정도에서 생략하겠다. 최종적으로 stacking이 완료되면 각각의 모델들의 prediction 값이 데이터의 열로 추가되어 총 13개의 컬럼이 추가되는데, 이렇게 추가된 데이터를 다시 classifier에 넣어 최종 prediction을 수행한다.
 
