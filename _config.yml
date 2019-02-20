@@ -74,6 +74,8 @@ prose:
               value: statistics
             - name: "Machine Learning"
               value: machine learning
+            - name: "Projects"
+              value: projects
             - name: "NLP"
               value: nlp
           alterable: true
