@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "블랙박스 모델 뜯어보기"
+title:  "[ML]블랙박스 모델 뜯어보기"
 subtitle: "model agnostic interpretation methods"
-date:   2019-02-20 17:08:13 -0400
+date:   2019-03-08 02:15:13 -0400
 categories: Machine Learning
 background: '/img/posts/03.jpg'
 ---
