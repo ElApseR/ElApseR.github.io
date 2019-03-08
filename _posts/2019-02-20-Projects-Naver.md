@@ -4,7 +4,7 @@ title:  "[Toy Project]기둥 뒤에 사람 있어요"
 subtitle: "인원 재실 여부로 불을 끄는 모델 설계"
 date:   2019-02-20 17:08:13 -0400
 categories: Projects
-background: '/img/posts/02.jpg'
+background: '/img/posts/07.jpeg'
 ---
 
 <h1 align='center'>들어가며</h1>
