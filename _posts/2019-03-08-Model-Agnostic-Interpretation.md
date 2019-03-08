@@ -9,7 +9,7 @@ background: '/img/posts/03.jpg'
 
 # 블랙박스 모델 뜯어보기
 
-*이 글은 <a href=https://christophm.github.io/interpretable-ml-book/agnostic.html>interpretable machine learning</a> 를 정리한 글입니다.
+*이 글은 [interpretable machine learning](https://christophm.github.io/interpretable-ml-book/agnostic.html)를 정리한 글입니다.
 해당 포스트에서 일부 추가 및 의역되거나 생략되는 내용이 있을 수 있습니다*
 
 ## intro
