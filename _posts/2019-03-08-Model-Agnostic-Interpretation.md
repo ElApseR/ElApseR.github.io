@@ -5,7 +5,6 @@ subtitle: "model agnostic interpretation methods"
 date:   2019-03-08 02:15:13 -0400
 categories: Machine-Learning
 background: '/img/posts/03.jpg'
-comments: true
 ---
 
 # 블랙박스 모델 뜯어보기
