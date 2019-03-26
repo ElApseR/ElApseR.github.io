@@ -9,6 +9,7 @@ url:               "http://elapser.github.io"
 twitter_username:
 github_username:   ElApseR
 facebook_username:
+disqus_shortname: ElApseR
 
 # Build settings
 timezone:    Asia/Seoul
