@@ -3,7 +3,7 @@ email:             medussa2818@gmail.com
 description:       Projects and Research by Hyunho Cho
 author:            Hyunho Cho
 baseurl:           ""
-url:               "http://elapser.github.io"
+url:               "https://elapser.github.io"
 
 # Social Profiles
 twitter_username:
@@ -23,8 +23,8 @@ plugins:
 
 prose:
   rooturl: '_posts'
-  siteurl: 'http://elapser.github.io'
-  relativeLinks: 'http://elpaser.github.io/links.jsonp'
+  siteurl: 'https://elapser.github.io'
+  relativeLinks: 'https://elpaser.github.io/links.jsonp'
   media: 'images'
   metadata:
     _posts:
