@@ -4,7 +4,7 @@ title: CATEGORY INDEX
 permalink: /categories/index.html
 title: Categories
 tags: [Categories]
-description: 
+description:
 background: '/img/bg-category.jpg'
 ---
 <!-- small tag lists. Not used for now.
@@ -33,7 +33,8 @@ background: '/img/bg-category.jpg'
       <!--li-->
       <article class="post-preview" id="content">
         <a href="{{ site.url }}{{ post.url }}">
-          <h5 class="post-subtitle">{{ post.subtitle }}</h5>
+          <!-- <h5 class="post-subtitle">{{ post.subtitle }}</h5> -->
+          <h5 class="post-subtitle">{{ post.title }}</h5>
           <!-- no description about time on categorical sorts.
           <span class="entry-date">
             <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}
