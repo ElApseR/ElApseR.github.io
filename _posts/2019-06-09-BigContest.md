@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "[Project]빅콘테스트 2018"
-subtitle: "블레이드 앤 소울 게임 유저 이탈 예측 모형 설계"
+title:  "[빅콘테스트 2018 후기]블레이드 앤 소울 게임 유저 이탈 예측 모형 설계"
+subtitle: "[Project]빅콘테스트 2018"
 date:   2019-06-10 14:50:13 -0400
 categories: Projects
 background: '/img/posts/01.jpg'
@@ -11,7 +11,8 @@ background: '/img/posts/01.jpg'
 - 이 프로젝트는 빅콘테스트 2018 Analysis 분야 챔피언리그에 참가한 내용입니다.
 - 이 프로젝트 주제는 블레이드 앤 소울 게임 유저 이탈 예측입니다.  
 - 저희는 **블린이** 팀으로 참가하여 2등에 해당하는 최우수상(한국정보화진흥원장상)을 수상하였습니다.
-- 이 프로젝트는 고동영, 김현우, 김혜주, 손진원과 함께 했습니다.
+- 이 프로젝트는 <a href="https://godongyoung.github.io/
+">고동영</a>, <a href="https://hwkim94.github.io">김현우</a>, 김혜주, <a href="https://jinwonsohn.github.io/">손진원</a>과 함께 했습니다.
 - 서술의 편의상, 반말로 작성되는 점 양해바랍니다.
 
 ---

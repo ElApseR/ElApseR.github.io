@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "[NLP]논문 리뷰"
-subtitle: "Depthwise Separable Convolutions for Neural Machine Translation"
+title:  "Depthwise Separable Convolutions for Neural Machine Translation"
+subtitle: "[NLP]논문 리뷰"
 date:   2018-02-09 20:20:14 -0400
 categories: NLP
 background: '/img/posts/03.jpg'
