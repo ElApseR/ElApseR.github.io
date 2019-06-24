@@ -24,7 +24,7 @@ background: '/img/posts/01.jpg'
     - k차원 vector는 word2vec으로 표현된 단어의 vector이다.
 - 위 둘을 합쳐서 한 문장을 n x k의 matrix로 표현한다.
 - window size h(단어 갯수)를 설정한다.
-- $c_i = f(w \cdot x_{i:i+(h-1)} + b)$ 의 convolution 연산을 해준다.
+- $$c_i = f(w \cdot x_{i:i+(h-1)} + b)$$ 의 convolution 연산을 해준다.
     - 이때 함수 f는 non linear한 activation function(예를 들면 tanh)이다.
 - 위의 convolution 연산의 결과로 각 window size별 filter의 갯수만큼 feature map이 나온다.
     - window size를 바꿔가면서 여러 개의 feature map을 생성한다.
@@ -37,17 +37,17 @@ background: '/img/posts/01.jpg'
 - dropout과 weight vector에 대한 L2-정규화 사용하여 정규화해준다.
 - dropout
     - dropout을 통해 hidden unit의 일부를 확률적으로 버림으로써, hidden unit간에 correlated 되는 걸 막아준다..
-    - $z$ = [$c^1$, . . . , $cˆ{m}$]
+    - $$z$$ = [$$c^1$$, . . . , $$cˆ{m}$$]
         - m개의 사이즈별 filter를 통해 얻은 max pooled 된 값을 성분으로 하는 벡터
         - 즉, 앞선 convolution 연산의 최종 output으로, feed forward network의 입력 vector
-    - $y = w \cdot (z \odot r) + b$
+    - $$y = w \cdot (z \odot r) + b$$
         - $\odot$은 element-wise 곱셈을 의미한다.
         - r의 성분은 Bernouli(p)를 따른다.
         - 즉, p의 확률만큼 z의 성분을 가려서(mask) back propagation 과정에서 update 하지 않는다.
-    - test 할 때에는, $\hat{w} = pw$를 이용한다.
+    - test 할 때에는, $$\hat{w} = pw$$를 이용한다.
         - 앞서 학습 과정에서 p의 확률로 update를 안 했기 때문에 가려지지 않은 weight에 상대적으로 큰 값이 학습되었을 것이므로 p를 이용하여 scaling 해주는 것.
 - L2-Normalization
-    - 매 gradient descent step마다 $\left\| \textbf{w} \right\|>s$인 경우, $\left\| \textbf{w} \right\|=s$가 되도록 rescale 해준다
+    - 매 gradient descent step마다 $$\left\| \textbf{w} \right\|>s$$인 경우, $$\left\| \textbf{w} \right\|=s$$가 되도록 rescale 해준다
 
 ---
 
