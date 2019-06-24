@@ -41,7 +41,7 @@ background: '/img/posts/01.jpg'
         - m개의 사이즈별 filter를 통해 얻은 max pooled 된 값을 성분으로 하는 벡터
         - 즉, 앞선 convolution 연산의 최종 output으로, feed forward network의 입력 vector
     - $$y = w \cdot (z \odot r) + b$$
-        - $\odot$은 element-wise 곱셈을 의미한다.
+        - $$\odot$$은 element-wise 곱셈을 의미한다.
         - r의 성분은 Bernouli(p)를 따른다.
         - 즉, p의 확률만큼 z의 성분을 가려서(mask) back propagation 과정에서 update 하지 않는다.
     - test 할 때에는, $$\hat{w} = pw$$를 이용한다.
