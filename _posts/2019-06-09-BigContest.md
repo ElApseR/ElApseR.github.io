@@ -12,7 +12,7 @@ background: '/img/posts/01.jpg'
 - 이 프로젝트 주제는 블레이드 앤 소울 게임 유저 이탈 예측입니다.  
 - 저희는 **블린이** 팀으로 참가하여 2등에 해당하는 최우수상(한국정보화진흥원장상)을 수상하였습니다.
 - 이 프로젝트는 <a href="https://godongyoung.github.io/
-">고동영</a>, <a href="https://hwkim94.github.io">김현우</a>, 김혜주, <a href="https://jinwonsohn.github.io/">손진원</a>과 함께 했습니다.
+">고동영</a>, <a href="https://hwkim94.github.io">김현우</a>, <a href="https://hyejukim-ybigta.github.io">김혜주</a>, <a href="https://jinwonsohn.github.io/">손진원</a>과 함께 했습니다.
 - 서술의 편의상, 반말로 작성되는 점 양해바랍니다.
 
 ---
